@@ -10,6 +10,10 @@
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
+            background-color: black;
+        }
+        h2 {
+            color: white;
         }
 
         json-viewer {
@@ -27,6 +31,8 @@
             height: 100px;
             margin-bottom: 10px;
             font-family: monospace;
+            background-color: black;
+            color: white;
         }
     </style>
 </head>
@@ -37,7 +43,7 @@
     <!-- The text area for pasting JSON data -->
     <textarea id="jsonInput" placeholder="Paste your JSON here"></textarea>
     <!-- Button to trigger the update of the JSON viewer -->
-    <button onclick="updateViewer()">Update Viewer</button>
+    <button onclick="updateViewer()">Beautify JSON</button>
 
     <!-- Add the json-viewer custom element where you want the JSON to be displayed -->
     <json-viewer id="jsonViewer"></json-viewer>
