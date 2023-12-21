@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Safe JSON Viewer</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.5.6/jsoneditor.min.css" rel="stylesheet" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsoneditor/9.5.6/jsoneditor.min.js"></script>
+  <style>
+    #jsonInput { height: 100px; width: 100%; }
+    #jsonOutput { height: 80vh; width: 100%; border: 1px solid lightgray; }
+    .jsoneditor, .jsoneditor-tree { line-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <h2>WL Safe JSON Viewer</h2>
+  <textarea id="jsonInput" placeholder="Paste your JSON here"></textarea><br>
+  <button onclick="beautifyJSON()">Beautify JSON</button>
+  <div id="jsonOutput"></div>
+
+  <script>
+    var editor = new JSONEditor(document.getElementById('jsonOutput'), {});
+
+    function beautifyJSON() {
+      var input = document.getElementById('jsonInput').value;
+      try {
+        var parsedJSON = JSON.parse(input);
+        editor.set(parsedJSON);
+      } catch (e) {
+        editor.set({ "error": 'Invalid JSON: ' + e.message });
+      }
+    }
+  </script>
+</body>
+</html>
