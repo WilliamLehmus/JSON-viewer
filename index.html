@@ -39,6 +39,7 @@
 <body>
 
     <h2>WL Safe JSON Viewer</h2>
+    <p>Use query to auto insert JSON: ?json=[URI encoded json] </p>
 
     <!-- The text area for pasting JSON data -->
     <textarea id="jsonInput" placeholder="Paste your JSON here"></textarea>
@@ -62,6 +63,27 @@
                 console.error("Invalid JSON data", e);
             }
         }
+
+         // Function to get JSON data from URL parameter
+         function getJsonFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            const jsonData = params.get('json');
+            return jsonData ? decodeURIComponent(jsonData) : null;
+        }
+
+        // Function to initialize the viewer with data from URL
+        function initializeViewer() {
+            console.log("Initializing viewer with URL data"); // Add this line
+            const jsonData = getJsonFromUrl();
+            if (jsonData) {
+                document.getElementById('jsonInput').value = jsonData;
+                updateViewer();
+            }
+        }
+
+        // Call the initialize function when the page loads
+        window.onload = initializeViewer;
+
     </script>
 
 </body>
