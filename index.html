@@ -1,5 +1,10 @@
+<!--  
+Random comment
+  -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Privacy JSON Viewer - By WL</title>
@@ -12,9 +17,11 @@
             padding: 20px;
             background-color: black;
         }
+
         h2 {
             color: white;
         }
+
         p {
             color: white;
         }
@@ -22,11 +29,15 @@
         json-viewer {
             /* Set the custom element to block so it behaves like a div */
             display: block;
-            height: 100%; /* Adjust the height as needed */
-            border: 1px solid #ccc; /* Optional border for visibility */
+            height: 100%;
+            /* Adjust the height as needed */
+            border: 1px solid #ccc;
+            /* Optional border for visibility */
             padding: 10px;
-            overflow: auto; /* Enable scrolling if content is too long */
-            margin-bottom: 20px; /* Space between viewer and textarea */
+            overflow: auto;
+            /* Enable scrolling if content is too long */
+            margin-bottom: 20px;
+            /* Space between viewer and textarea */
         }
 
         #jsonInput {
@@ -39,6 +50,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <h2>WL Safe JSON Viewer</h2>
@@ -55,39 +67,40 @@
     <script>
         // Function to update the JSON viewer with the data from the textarea
         function updateViewer() {
-            const viewer = document.getElementById('jsonViewer');
-            const inputData = document.getElementById('jsonInput').value;
+            const viewer=document.getElementById('jsonViewer');
+            const inputData=document.getElementById('jsonInput').value;
 
             try {
                 // Parse the input data as JSON and set it to the viewer
-                viewer.data = JSON.parse(inputData);
+                viewer.data=JSON.parse(inputData);
             } catch (e) {
                 // If there is an error in parsing JSON, log it to the console
                 console.error("Invalid JSON data", e);
             }
         }
 
-         // Function to get JSON data from URL parameter
-         function getJsonFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            const jsonData = params.get('json');
-            return jsonData ? decodeURIComponent(jsonData) : null;
+        // Function to get JSON data from URL parameter
+        function getJsonFromUrl() {
+            const params=new URLSearchParams(window.location.search);
+            const jsonData=params.get('json');
+            return jsonData? decodeURIComponent(jsonData):null;
         }
 
         // Function to initialize the viewer with data from URL
         function initializeViewer() {
             console.log("Initializing viewer with URL data"); // Add this line
-            const jsonData = getJsonFromUrl();
+            const jsonData=getJsonFromUrl();
             if (jsonData) {
-                document.getElementById('jsonInput').value = jsonData;
+                document.getElementById('jsonInput').value=jsonData;
                 updateViewer();
             }
         }
 
         // Call the initialize function when the page loads
-        window.onload = initializeViewer;
+        window.onload=initializeViewer;
 
     </script>
 
 </body>
+
 </html>
